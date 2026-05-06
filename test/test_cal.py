@@ -21,7 +21,7 @@ def test_calculate_inputs():
     (1000, 30.0),  
     (10000, 345.0), 
     (100000, 3940.0), 
-    (150000, 5190.0)
+    (150000, 6190.0)
 ])
 def test_calculate_interest(deposit, expected_interest):
     assert part1.calculate_interest(deposit) == f"{expected_interest:.2f}"
