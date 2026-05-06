@@ -1,0 +1,24 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.9
+    working_directory: ~/cal
+    steps:
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: |
+            python -m venv cal
+            . cal/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Run tests
+          command: |
+            . cal/bin/activate
+            python -m pytest test/ -vv --cov
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
